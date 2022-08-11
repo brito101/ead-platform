@@ -1,2 +1,2 @@
 
-# EAD Plataform
+# EAD Platform
