@@ -29,19 +29,19 @@ class LessonRepository
         return $this->entity->findOrFail($identify);
     }
 
-    // public function markLessonViewed(string $lessonId)
-    // {
-    //     $user = $this->getUserAuth();
-    //     $view = $user->views()->where('lesson_id', $lessonId)->first();
+    public function markLessonViewed(string $lessonId)
+    {
+        $user = $this->getUserAuth();
+        $view = $user->views()->where('lesson_id', $lessonId)->first();
 
-    //     if ($view) {
-    //         return $view->update([
-    //             'qty' => $view->qty + 1,
-    //         ]);
-    //     }
+        if ($view) {
+            return $view->update([
+                'qty' => $view->qty + 1,
+            ]);
+        }
 
-    //     return $user->views()->create([
-    //         'lesson_id' => $lessonId
-    //     ]);
-    // }
+        return $user->views()->create([
+            'lesson_id' => $lessonId
+        ]);
+    }
 }
