@@ -22,7 +22,7 @@ class AuthTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->postJson('/auth', [
+        $response = $this->postJson('/api/auth', [
             'email' => $user->email,
             'password' => 'password',
             'device_name' => 'test'
@@ -33,7 +33,7 @@ class AuthTest extends TestCase
 
     public function test_error_logout()
     {
-        $response = $this->postJson('/logout');
+        $response = $this->postJson('/api/logout');
 
         $response->assertStatus(401);
     }
@@ -42,7 +42,7 @@ class AuthTest extends TestCase
     {
         $token = $this->createTokenUser();
 
-        $response = $this->postJson('/logout', [], [
+        $response = $this->postJson('/api/logout', [], [
             'Authorization' => "Bearer {$token}",
         ]);
 
@@ -51,7 +51,7 @@ class AuthTest extends TestCase
 
     public function test_error_get_me()
     {
-        $response = $this->getJson('/me');
+        $response = $this->getJson('/api/me');
 
         $response->assertStatus(401);
     }
@@ -60,7 +60,7 @@ class AuthTest extends TestCase
     {
         $token = $this->createTokenUser();
 
-        $response = $this->getJson('/me', [
+        $response = $this->getJson('/api/me', [
             'Authorization' => "Bearer {$token}",
         ]);
 
