@@ -49,7 +49,7 @@ class SupportRepository
             })
             ->with('replies')
             ->orderBy('updated_at')
-            ->get();
+            ->paginate();
     }
 
     public function createNewSupport(array $data): Support
